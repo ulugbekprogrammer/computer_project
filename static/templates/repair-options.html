@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repair Options - TechFix</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/repair-options.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="logo">
+            <h1>TechFix</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/static/templates/index.html">Home</a></li>
+                <li><a href="/static/templates/services.html">Services</a></li>
+                <li><a href="/static/templates/repair-options.html" class="active">Repair Options</a></li>
+                <li><a href="/static/templates/index.html#about">About</a></li>
+                <li><a href="/static/templates/index.html#contact">Contact</a></li>
+                <div id="auth-buttons" style="display: flex">
+                    <li><a href="/static/templates/login.html" class="btn">Login</a></li>
+                    <li><a href="/static/templates/signup.html" class="btn btn-primary">Sign Up</a></li>
+                </div>
+            </ul>
+        </nav>
+        <div class="dark-mode-toggle">
+            <i class="fas fa-moon"></i>
+            <label class="switch">
+                <input type="checkbox" id="darkModeToggle">
+                <span class="slider round"></span>
+            </label>
+            <i class="fas fa-sun"></i>
+        </div>
+    </div>
+</header>
+
+<section class="page-header">
+    <div class="container">
+        <h1>Choose Your Repair Option</h1>
+        <p>Select how you'd like us to handle your computer repair</p>
+    </div>
+</section>
+
+<section class="repair-options-detailed">
+    <div class="container">
+        <div class="repair-option-cards">
+            <div class="repair-option-card">
+                <div class="repair-option-header">
+                    <div class="option-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h2>We Pick Up & Deliver or Bring to Our Center</h2>
+                    <p>Convenient service at your doorstep</p>
+                </div>
+                <div class="option-details">
+                    <p>Our technicians will come to your location, pick up your device, repair it in our workshop, and deliver it back to you when it's fixed.</p>
+                    <h3>How it works:</h3>
+                    <ol>
+                        <li>Schedule a pickup time that works for you</li>
+                        <li>Our technician arrives and collects your device</li>
+                        <li>We diagnose and repair the issue at our workshop</li>
+                        <li>We deliver your fixed device back to your location</li>
+                    </ol>
+                    <h3>Benefits:</h3>
+                    <ul>
+                        <li>No need to leave your home or office</li>
+                        <li>Convenient for large or multiple devices</li>
+                        <li>Perfect for busy schedules</li>
+                        <li>Available for both residential and business customers</li>
+                    </ul>
+                </div>
+                <div class="option-pricing">
+                    <a href="/static/templates/order-repair.html" class="btn btn-primary btn-block">Schedule Pickup</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="repair-location">
+            <h2 class="section-title">Our Repair Center Location</h2>
+            <div class="map-container">
+                <img src="https://www.google.com/maps/about/images/mymaps/mymaps-desktop-16x9.png" alt="Map of repair center location" class="map-image">
+                <div class="location-details">
+                    <h3>TechFix Repair Center</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Digital City, TC 12345</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9am-6pm, Sat: 10am-4pm</p>
+                    <p><i class="fas fa-envelope"></i> support@techfix.example.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="common-repairs">
+    <div class="container">
+        <h2 class="section-title">Common Repair Services</h2>
+        <div class="repair-services-grid">
+            <div class="repair-service">
+                <div class="service-icon">
+                    <i class="fas fa-laptop"></i>
+                </div>
+                <h3>Screen Replacement</h3>
+                <p>Fix cracked or damaged screens for laptops and desktops.</p>
+                <p class="service-price">From $99</p>
+            </div>
+            <div class="repair-service">
+                <div class="service-icon">
+                    <i class="fas fa-keyboard"></i>
+                </div>
+                <h3>Keyboard Replacement</h3>
+                <p>Replace damaged or non-responsive keyboards.</p>
+                <p class="service-price">From $69</p>
+            </div>
+            <div class="repair-service">
+                <div class="service-icon">
+                    <i class="fas fa-battery-full"></i>
+                </div>
+                <h3>Battery Replacement</h3>
+                <p>Replace old or non-functioning batteries.</p>
+                <p class="service-price">From $49</p>
+            </div>
+            <div class="repair-service">
+                <div class="service-icon">
+                    <i class="fas fa-virus-slash"></i>
+                </div>
+                <h3>Virus Removal</h3>
+                <p>Remove malware and viruses from your system.</p>
+                <p class="service-price">From $79</p>
+            </div>
+        </div>
+    </section>
+
+<section class="cta">
+    <div class="container">
+        <h2>Ready to Get Your Computer Fixed?</h2>
+        <p>Choose your preferred repair option and get back to work quickly.</p>
+        <div class="cta-buttons">
+            <a href="#" class="btn btn-primary">Schedule Pickup</a>
+            <a href="#" class="btn">Visit Our Center</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>TechFix</h2>
+                <p>Professional Computer Repair Services</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/static/templates/index.html">Home</a></li>
+                    <li><a href="/static/templates/services.html">Services</a></li>
+                    <li><a href="/static/templates/repair-options.html">Repair Options</a></li>
+                    <li><a href="/static/templates/index.html#about">About</a></li>
+                    <li><a href="/static/templates/index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Account</h3>
+                <ul>
+                    <li><a href="/static/templates/login.html">Login</a></li>
+                    <li><a href="/static/templates/signup.html">Sign Up</a></li>
+                    <li><a href="/static/templates/admin-login.html">Admin Portal</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 TechFix. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="/static/js/darkmode.js"></script>
+<script src="/static/js/auth.js"></script>
+</body>
+</html>

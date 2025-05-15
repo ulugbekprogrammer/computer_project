@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - TechFix</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>TechFix</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/static/templates/index.html">Home</a></li>
+                    <li><a href="/static/templates/services.html">Services</a></li>
+                    <li><a href="/static/templates/repair-options.html">Repair Options</a></li>
+                    <li><a href="/static/templates/index.html#about">About</a></li>
+                    <li><a href="/static/templates/index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="dark-mode-toggle">
+                <i class="fas fa-moon"></i>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="slider round"></span>
+                </label>
+                <i class="fas fa-sun"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-options">
+                    <a href="/static/templates/signup.html" class="authXu-option active">Sign Up</a>
+                    <a href="/static/templates/login.html" class="auth-option">Login</a>
+                    <a href="/static/templates/admin-login.html" class="auth-option">Admin</a>
+                </div>
+                <div class="auth-form-container">
+                    <h2>Create Account</h2>
+                    <form class="auth-form" id="signup-form">
+                        <div class="form-group">
+                            <label for="account-type">Account Type</label>
+                            <select id="account-type" name="account-type" required>
+                                <option value="">Select Account Type</option>
+                                <option value="individual">Individual User</option>
+                                <option value="business">Business</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Full Name / Business Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group business-field" style="display: none;">
+                            <label for="business-type">Business Type</label>
+                            <select id="business-type" name="business-type">
+                                <option value="">Select Business Type</option>
+                                <option value="small">Small Business (1-10 employees)</option>
+                                <option value="medium">Medium Business (11-50 employees)</option>
+                                <option value="large">Large Business (51+ employees)</option>
+                                <option value="educational">Educational Institution</option>
+                                <option value="nonprofit">Non-Profit Organization</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group business-field" style="display: none;">
+                            <label for="contact-person">Contact Person</label>
+                            <input type="text" id="contact-person" name="contact-person">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group business-field" style="display: none;">
+                            <label for="address">Business Address</label>
+                            <textarea id="address" name="address" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password" name="confirm-password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="terms-checkbox">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                    </form>
+                    <div class="auth-footer">
+                        <p>Already have an account? <a href="/static/templates/login.html">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>TechFix</h2>
+                    <p>Professional Computer Repair Services</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/static/templates/index.html">Home</a></li>
+                        <li><a href="/static/templates/services.html">Services</a></li>
+                        <li><a href="/static/templates/repair-options.html">Repair Options</a></li>
+                        <li><a href="/static/templates/index.html#about">About</a></li>
+                        <li><a href="/static/templates/index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Account</h3>
+                    <ul>
+                        <li><a href="/static/templates/login.html">Login</a></li>
+                        <li><a href="/static/templates/signup.html">Sign Up</a></li>
+                        <li><a href="/static/templates/admin-login.html">Admin Portal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 TechFix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/darkmode.js"></script>
+    <script src="/static/js/auth.js"></script>
+    <script src="/static/js/signup.js"></script>
+</body>
+</html>

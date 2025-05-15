@@ -1,0 +1,188 @@
+.profile-section {
+            padding: 4rem 0;
+            background-color: #f9f9f9;
+        }
+        .dark-mode .profile-section {
+            background-color: #1a1a1a;
+        }
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .profile-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .dark-mode .profile-card {
+            background: #2a2a2a;
+            color: #fff;
+        }
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #007bff;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .profile-details h2 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+        .profile-details p {
+            margin: 0.5rem 0;
+            color: #666;
+        }
+        .dark-mode .profile-details p {
+            color: #ccc;
+        }
+        .profile-actions {
+            margin-top: 1rem;
+        }
+        .repairs-section {
+            margin-top: 2rem;
+        }
+        .repairs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .repairs-table th,
+        .repairs-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .dark-mode .repairs-table th,
+        .dark-mode .repairs-table td {
+            border-bottom: 1px solid #444;
+        }
+        .repairs-table th {
+            background: #f4f4f4;
+            font-weight: 600;
+        }
+        .dark-mode .repairs-table th {
+            background: #333;
+        }
+        .repairs-table tr:hover {
+            background: #f9f9f9;
+        }
+        .dark-mode .repairs-table tr:hover {
+            background: #2a2a2a;
+        }
+        .badge {
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .badge-high {
+            background: #ffe6e6;
+            color: #dc3545;
+        }
+        .badge-medium {
+            background: #fff3cd;
+            color: #ffc107;
+        }
+        .badge-low {
+            background: #d4edda;
+            color: #28a745;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal.show {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            padding: 2rem;
+            position: relative;
+        }
+        .dark-mode .modal-content {
+            background: #2a2a2a;
+            color: #fff;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #666;
+        }
+        .dark-mode .modal-close {
+            color: #ccc;
+        }
+        .modal-close:hover {
+            color: #dc3545;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .dark-mode .form-group input,
+        .dark-mode .form-group select {
+            background: #333;
+            border-color: #444;
+            color: #fff;
+        }
+        .modal-footer {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            .profile-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .repairs-table {
+                font-size: 0.9rem;
+            }
+            .repairs-table th,
+            .repairs-table td {
+                padding: 8px;
+            }
+        }
