@@ -33,6 +33,9 @@ class RepairCreate(BaseModel):
     quantity: int
     delivery_method: str
 
+class RepairUpdate(BaseModel):
+    completed: Optional[bool] = None
+
 class RepairOut(BaseModel):
     id: int
     user_id: int
@@ -41,12 +44,12 @@ class RepairOut(BaseModel):
     quantity: int
     priority: str
     delivery_method: str
-    user_name: str
-    user_surname: str
+    user_name: Optional[str]
+    user_surname: Optional[str]
+    completed: bool
 
     class Config:
         orm_mode = True
-        arbitrary_types_allowed = True
 
 class UserOut(BaseModel):
     id: int

@@ -12,7 +12,7 @@ from jose import JWTError, jwt
 from sqlalchemy.orm import Session
 from schemas import *
 from dotenv import load_dotenv
-import logging
+import logging  
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -98,15 +98,14 @@ def get_user_by_name(db: Session, name: str):
     return db.query(User).filter(User.name == name).first()
 
 # Calculate repair priority
-def calculate_priority(submission_date: datetime) -> Priority:
+def calculate_priority(submission_date: datetime) -> str:
     days_passed = (datetime.utcnow() - submission_date).days
     if days_passed <= 3:
-        return Priority.LOW
+        return "LOW"
     elif days_passed <= 5:
-        return Priority.MEDIUM
+        return "MEDIUM"
     else:
-        return Priority.HIGH
-
+        return "HIGH"
 # JWT creation
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     to_encode = data.copy()
@@ -227,18 +226,18 @@ async def get_user_repairs(current_user: User = Depends(get_current_user), db: S
         repair.priority = calculate_priority(repair.submission_date)
         db.add(repair)
     db.commit()
+    logger.info(f"Fetched repairs for user {current_user.name}")
     return repairs
+
 
 # Repair submission
 @app.post("/repairs", response_model=RepairOut)
-async def submit_repair(repair: RepairCreate, current_user: User = Depends(get_current_user),
-                        db: Session = Depends(get_db)):
+async def submit_repair(repair: RepairCreate, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     if repair.quantity < 1:
         raise HTTPException(status_code=400, detail="Quantity must be at least 1")
     user_repairs = db.query(Repair).filter(Repair.user_id == current_user.id).count()
-    if current_user.role == "user" and repair.quantity > 1:  # Changed: allow existing repairs, limit quantity to 1
+    if current_user.role == "user" and repair.quantity > 1:
         raise HTTPException(status_code=400, detail="Users can submit only one computer at a time")
-
     submission_date = datetime.utcnow()
     priority = calculate_priority(submission_date)
     db_repair = Repair(
@@ -247,14 +246,17 @@ async def submit_repair(repair: RepairCreate, current_user: User = Depends(get_c
         repair_description=repair.repair_description,
         quantity=repair.quantity,
         priority=priority,
-        delivery_method=DeliveryMethod(repair.delivery_method)
+        delivery_method=repair.delivery_method,
+        completed=False
     )
     db.add(db_repair)
     db.commit()
     db.refresh(db_repair)
     db_repair.user_name = current_user.name
     db_repair.user_surname = current_user.surname
+    logger.info(f"Repair submitted by user {current_user.name}")
     return db_repair
+
 
 # Check user repairs
 # @app.get("/user/repairs", response_model=List[RepairOut])
@@ -270,7 +272,6 @@ async def submit_repair(repair: RepairCreate, current_user: User = Depends(get_c
 async def admin_panel():
     return FileResponse("static/templates/admin.html")
 
-# Admin endpoints
 @app.get("/admin/users", response_model=List[UserOut])
 async def list_users(current_user: User = Depends(get_current_admin), db: Session = Depends(get_db)):
     users = db.query(User).filter(User.name.isnot(None), User.surname.isnot(None)).all()
@@ -280,8 +281,10 @@ async def list_users(current_user: User = Depends(get_current_admin), db: Sessio
         for repair in user.repairs:
             repair.user_name = user.name
             repair.user_surname = user.surname
+            repair.priority = calculate_priority(repair.submission_date)
             db.add(repair)
     db.commit()
+    logger.info(f"Admin {current_user.name} fetched user list")
     return users
 
 @app.put("/admin/users/{user_id}", response_model=UserOut)
@@ -304,6 +307,7 @@ async def update_user(user_id: int, user_update: UserUpdate, current_user: User 
         db_user.role = user_update.role
     db.commit()
     db.refresh(db_user)
+    logger.info(f"Admin {current_user.name} updated user {db_user.name}")
     return db_user
 
 @app.delete("/admin/users/{user_id}")
@@ -313,6 +317,7 @@ async def delete_user(user_id: int, current_user: User = Depends(get_current_adm
         raise HTTPException(status_code=404, detail="User not found")
     db.delete(db_user)
     db.commit()
+    logger.info(f"Admin {current_user.name} deleted user {user_id}")
     return {"message": "User deleted"}
 
 @app.get("/admin/repairs", response_model=List[RepairOut])
@@ -324,4 +329,30 @@ async def list_repairs(current_user: User = Depends(get_current_admin), db: Sess
         repair.user_surname = repair.user.surname
         db.add(repair)
     db.commit()
+    logger.info(f"Admin {current_user.name} fetched repair list")
     return repairs
+
+@app.put("/admin/repairs/{repair_id}", response_model=RepairOut)
+async def update_repair(repair_id: int, repair_update: RepairUpdate, current_user: User = Depends(get_current_admin), db: Session = Depends(get_db)):
+    db_repair = db.query(Repair).filter(Repair.id == repair_id).first()
+    if not db_repair:
+        raise HTTPException(status_code=404, detail="Repair not found")
+    if repair_update.completed is not None:
+        db_repair.completed = repair_update.completed
+    db.commit()
+    db.refresh(db_repair)
+    db_repair.user_name = db_repair.user.name
+    db_repair.user_surname = db_repair.user.surname
+    db_repair.priority = calculate_priority(db_repair.submission_date)
+    logger.info(f"Admin {current_user.name} updated repair {repair_id}")
+    return db_repair
+
+@app.delete("/admin/repairs/{repair_id}")
+async def delete_repair(repair_id: int, current_user: User = Depends(get_current_admin), db: Session = Depends(get_db)):
+    db_repair = db.query(Repair).filter(Repair.id == repair_id).first()
+    if not db_repair:
+        raise HTTPException(status_code=404, detail="Repair not found")
+    db.delete(db_repair)
+    db.commit()
+    logger.info(f"Admin {current_user.name} deleted repair {repair_id}")
+    return {"message": "Repair deleted"}

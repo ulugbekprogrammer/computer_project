@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, DateTime, Enum
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, DateTime, Enum, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from datetime import datetime
@@ -34,6 +34,7 @@ class Repair(Base):
     quantity = Column(Integer, nullable=False)
     priority = Column(Enum(Priority), nullable=False)
     delivery_method = Column(Enum(DeliveryMethod), nullable=False)
+    completed = Column(Boolean, default=False)
     user_name = Column(String, nullable=True)
     user_surname = Column(String, nullable=True)
     user = relationship("User", back_populates="repairs")

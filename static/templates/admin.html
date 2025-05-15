@@ -209,41 +209,41 @@
 
             <!-- Repairs Section -->
             <section id="repairs-section" class="content-section hidden">
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="card-title">Repair Management</h2>
-                        <div class="header-actions">
-                            <select id="repair-filter" class="form-control">
-                                <option value="all">All Repairs</option>
-                                <option value="high">High Priority</option>
-                                <option value="medium">Medium Priority</option>
-                                <option value="low">Low Priority</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-container">
-                            <table id="repairs-table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>User</th>
-                                        <th>Description</th>
-                                        <th>Submission Date</th>
-                                        <th>Quantity</th>
-                                        <th>Delivery Method</th>
-                                        <th>Priority</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Populated by JavaScript -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Repair Management</h2>
+            <div class="header-actions">
+                <select id="repair-filter" class="form-control">
+                    <option value="all">All Repairs</option>
+                    <option value="pending">Pending Only</option>
+                    <option value="completed">Completed Only</option>
+                </select>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-container">
+                <table id="repairs-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>User</th>
+                            <th>Description</th>
+                            <th>Submission Date</th>
+                            <th>Quantity</th>
+                            <th>Delivery Method</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
 
             <!-- Profile Section -->
             <section id="profile-section" class="content-section hidden">
