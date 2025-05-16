@@ -1,6 +1,7 @@
 from pydantic import BaseModel, validator
 from typing import Optional, List
 from datetime import datetime
+from models import DeliveryMethod  # Add this import
 
 class UserCreate(BaseModel):
     name: str
@@ -31,7 +32,7 @@ class UserUpdate(BaseModel):
 class RepairCreate(BaseModel):
     repair_description: str
     quantity: int
-    delivery_method: str
+    delivery_method: DeliveryMethod  # Use enum instead of str
 
 class RepairUpdate(BaseModel):
     completed: Optional[bool] = None

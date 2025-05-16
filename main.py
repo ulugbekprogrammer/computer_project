@@ -97,7 +97,6 @@ def get_password_hash(password):
 def get_user_by_name(db: Session, name: str):
     return db.query(User).filter(User.name == name).first()
 
-# Calculate repair priority
 def calculate_priority(submission_date: datetime) -> str:
     days_passed = (datetime.utcnow() - submission_date).days
     if days_passed <= 3:
@@ -106,7 +105,7 @@ def calculate_priority(submission_date: datetime) -> str:
         return "MEDIUM"
     else:
         return "HIGH"
-# JWT creation
+
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     to_encode = data.copy()
     if expires_delta:
